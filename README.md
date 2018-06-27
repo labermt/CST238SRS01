@@ -1,13 +1,17 @@
 # CST238SRS01
-Happy Birthday 2 You
+Happy Birthday 2 You  
+
+App Name:  
+
+Happy Birthday 2 You  
 
 Purpose:  
 
 - Learn to create an app with field and form level validation.  
 
-App Name: Happy Birthday 2 You  
+Specification:  
 
-Create an app that allows you to type a name and a birthday month and day (not the birth year).  
+Create an app that allows you to type a name and a birthday month and day (NOT the birth year).  
 
 Keep a count of how many people entered birthdays and display it in the app.  
 
