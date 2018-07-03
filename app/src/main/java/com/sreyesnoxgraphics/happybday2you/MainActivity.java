@@ -20,6 +20,15 @@
  *                            Created method that handles generating
  *                            the days within a given month when
  *                            selected by the user
+ *
+ *                            Created Helper function for
+ *                            generating days in a list view
+ *
+ *                            Test Driven development: as of
+ *                            7/02/18 SRS displays unnecessary
+ *                            test output validation.
+ *                            This will be removed upon completion
+ *                            of SRS
  **************************************************************/
 package com.sreyesnoxgraphics.happybday2you;
 
@@ -29,7 +38,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -37,6 +45,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -62,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Get the default theme text color for text views
         final ColorStateList defaultThemeColor = etFirstname.getTextColors();
-
 
         // Disable the register button until all fields are not empty
         btnRegister.setEnabled(false);
@@ -104,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
         // Apply the adapter to the spinner
         spBirthMonth.setAdapter(birthMonthAdapter);
 
+        GenerateBirthMonthDaysArrayAdapter(R.array.months31Days_array);
+
         // Interface implementation call
         BirthMonthSelectionHandler();
 
@@ -111,17 +121,16 @@ public class MainActivity extends AppCompatActivity {
         ValidateFormRegistration();
     }
 
+    //*********************************************************************
+    // * Purpose: This function handles a click on the "Register" button
+    // * and stores the entry into persistent storage.
+    // *
+    // * Pre-condition: User does not register (click not handled).
+    // *
+    // * Post-condition: User is registered (click handled).
+    // ************************************************************************/
     private void ValidateFormRegistration()
     {
-        //*********************************************************************
-        // * Purpose: This function handles a click on the "Register" button
-        // * and sends the user data to the server to connect to the database in
-        // * order to store user information.
-        // *
-        // * Pre-condition: User does not register (click not handled).
-        // *
-        // * Post-condition: User is registered (click handled).
-        // ************************************************************************/
         btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,14 +151,48 @@ public class MainActivity extends AppCompatActivity {
                 if (monthSelection.equals("Months")) {
                     Toast.makeText(MainActivity.this, "Please select a month",
                             Toast.LENGTH_LONG).show();
-                    spBirthMonth.setBackgroundColor(Color.RED);
+                    // Set to red background. Use text view of xml file and not the actual spinner
+                    ((TextView)spBirthMonth.getSelectedView()).setTextColor(Color.RED);
                     passes = false;
                 }
                 if (daySelection.equals("Days")) {
                     Toast.makeText(MainActivity.this, "Please select a number for days",
                             Toast.LENGTH_LONG).show();
-                    spBirthMonthDays.setBackgroundColor(Color.RED);
+                    ((TextView)spBirthMonthDays.getSelectedView()).setTextColor(Color.RED);
                     passes = false;
+                }
+                if (monthSelection.equals("February"))
+                {
+                    if (daySelection.equals("Days")){
+                        Toast.makeText(MainActivity.this, "Please select a number for days",
+                                Toast.LENGTH_LONG).show();
+                        ((TextView)spBirthMonthDays.getSelectedView()).setTextColor(Color.RED);
+                        passes = false;
+                    }
+                   else if (Integer.parseInt(daySelection) > 28)
+                    {
+                        Toast.makeText(MainActivity.this, "Please select a valid number. " + monthSelection + " has only 28 days",
+                                Toast.LENGTH_LONG).show();
+                        ((TextView)spBirthMonthDays.getSelectedView()).setTextColor(Color.RED);
+                        passes = false;
+                    }
+                }
+                if (monthSelection.equals("April") || monthSelection.equals("June") || monthSelection.equals("September") || monthSelection.equals("November"))
+                {
+                    if (daySelection.equals("Days")){
+                        Toast.makeText(MainActivity.this, "Please select a number for days",
+                                Toast.LENGTH_LONG).show();
+                        ((TextView)spBirthMonthDays.getSelectedView()).setTextColor(Color.RED);
+                        passes = false;
+                    }
+
+                    else if (Integer.parseInt(daySelection) > 30)
+                    {
+                        Toast.makeText(MainActivity.this, "Please select a valid number. " + monthSelection + " has only 30 days",
+                                Toast.LENGTH_LONG).show();
+                        ((TextView)spBirthMonthDays.getSelectedView()).setTextColor(Color.RED);
+                        passes = false;
+                    }
                 }
                 if (passes) {
                     // Save values to persistent storage
@@ -158,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                     etFirstname.getText().clear();
                     etLastname.getText().clear();
                     spBirthMonth.setSelection(0);
-                    spBirthMonthDays.setSelection(0);
+                    //spBirthMonthDays.setSelection(0);
                 }
             }
         });
@@ -181,24 +224,48 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    //*********************************************************************
+    // * Purpose: This function handles the list of days within a given
+    // *          month if the user happens to select a month first
+    // *
+    // * Pre-condition: Month is not handled
+    // *
+    // * Post-condition: User selects month (click handled).
+    // ************************************************************************/
     private void BirthMonthSelectionHandler () {
         spBirthMonth.setOnItemSelectedListener(new OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
+
                 // Save user selection
                 monthSelection = (String)parent.getItemAtPosition(pos);
+
+                // Reset to default background. Use text view of xml file and not the actual spinner
+                ((TextView)spBirthMonth.getSelectedView()).setTextColor(Color.BLACK);
+
                 Toast.makeText(MainActivity.this, "The month you selected is " + monthSelection, Toast.LENGTH_SHORT).show();
 
-                if (parent.getItemAtPosition(pos).equals("February")){
-                    Toast.makeText(MainActivity.this, "This Month has 28 days", Toast.LENGTH_SHORT).show();
-                    GenerateBirthMonthDaysArrayAdapter(R.array.months28Days_array);
+                if (parent.getItemAtPosition(pos).equals("Months") && daySelection != null && (daySelection.equals("Days") ||
+                        (Integer.parseInt(daySelection) >= 1 && Integer.parseInt(daySelection) <= 31))){
+                    // Default to 31 days if user re-selects months during run time
+                    // The professor might not like that you reset the days if user selects the default value month, if this is
+                    // the case you can simply remove the date range
+                    GenerateBirthMonthDaysArrayAdapter(R.array.months31Days_array);
                 }
-                else if (parent.getItemAtPosition(pos).equals("April") || parent.getItemAtPosition(pos).equals("June") ||
-                         parent.getItemAtPosition(pos).equals("September") || parent.getItemAtPosition(pos).equals("November")) {
+                if (parent.getItemAtPosition(pos).equals("February") && daySelection.equals("Days")){
+                    Toast.makeText(MainActivity.this, "This Month has 28 days", Toast.LENGTH_SHORT).show();
+                        GenerateBirthMonthDaysArrayAdapter(R.array.months28Days_array);
+                }
+                else if ((parent.getItemAtPosition(pos).equals("April") || parent.getItemAtPosition(pos).equals("June") ||
+                          parent.getItemAtPosition(pos).equals("September") || parent.getItemAtPosition(pos).equals("November")) &&
+                          daySelection.equals("Days")) {
                     Toast.makeText(MainActivity.this, "This Month has 30 days", Toast.LENGTH_SHORT).show();
                     GenerateBirthMonthDaysArrayAdapter(R.array.months30Days_array);
                 }
-                else{
+                else if (((parent.getItemAtPosition(pos).equals("January") || parent.getItemAtPosition(pos).equals("March") ||
+                          parent.getItemAtPosition(pos).equals("May") || parent.getItemAtPosition(pos).equals("July")) ||
+                          parent.getItemAtPosition(pos).equals("August") || parent.getItemAtPosition(pos).equals("October") ||
+                          parent.getItemAtPosition(pos).equals("December")) && daySelection.equals("Days")){
                     Toast.makeText(MainActivity.this, "This Month has 31 days", Toast.LENGTH_SHORT).show();
                     GenerateBirthMonthDaysArrayAdapter(R.array.months31Days_array);
                 }
@@ -210,6 +277,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    //*********************************************************************
+    // * Purpose: This function is used to generate a list of days
+    // *
+    // * Pre-condition: list days for month is not handled
+    // *
+    // * Post-condition: list populated with days (click handled).
+    // ************************************************************************/
     private void GenerateBirthMonthDaysArrayAdapter(int monthsDays_arrayID)
     {
         // Create an array adapter that will use the string array resources for days within a given month
@@ -225,9 +299,14 @@ public class MainActivity extends AppCompatActivity {
         // Handle click listener event
         spBirthMonthDays.setOnItemSelectedListener(new OnItemSelectedListener(){
             @Override
+
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id){
                 // Save user selection
                 daySelection = (String)parent.getItemAtPosition(pos);
+
+                // Reset to default background. Use text view of xml file and not the actual spinner
+                ((TextView)spBirthMonthDays.getSelectedView()).setTextColor(Color.BLACK);
+
                 Toast.makeText(MainActivity.this, "The day you selected is " + daySelection, Toast.LENGTH_SHORT).show();
             }
             @Override
@@ -236,5 +315,4 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
-
 }
