@@ -32,6 +32,8 @@
  **************************************************************/
 package com.sreyesnoxgraphics.happybday2you;
 
+import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +50,8 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+
 public class MainActivity extends AppCompatActivity {
 
     // Variables instantiated to handle UI resources
@@ -56,6 +60,12 @@ public class MainActivity extends AppCompatActivity {
     Spinner spBirthMonth, spBirthMonthDays;
 
     private String monthSelection, daySelection;
+
+    // Variables to create file path directory for birthday entries
+    protected ContextWrapper cw;
+    private File directory;
+    private File directoryPath;
+    private String birthdayEntriesDirectory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +84,20 @@ public class MainActivity extends AppCompatActivity {
 
         // Disable the register button until all fields are not empty
         btnRegister.setEnabled(false);
+
+        // directoryPath will equal the directory and file name
+        cw = new ContextWrapper(getApplicationContext());
+        directory = cw.getDir("birthdayEntriesDir", Context.MODE_APPEND);
+        directoryPath = new File(directory, "entries.txt");
+
+        birthdayEntriesDirectory = directory.toString();
+
+        // check if file exist
+        if(FileExist(directory.toString()))
+        {
+            // if file exist good!, if it doesnt we already created one!, this can jsut be a check
+            Toast.makeText(this, "File Exist!", Toast.LENGTH_SHORT).show();
+        }
 
         etFirstname.addTextChangedListener(new TextWatcher() {
             @Override
@@ -119,6 +143,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Registration call
         ValidateFormRegistration();
+    }
+
+    private boolean FileExist(String parentPath) {
+        
+        File file = new File(parentPath, "entries.txt");
+        return file.toString().equals(directoryPath.toString());
     }
 
     //*********************************************************************
