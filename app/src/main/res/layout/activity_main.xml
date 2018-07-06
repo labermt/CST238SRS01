@@ -7,137 +7,167 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editText"
-        android:layout_width="307dp"
+        android:id="@+id/name"
+        android:layout_width="310dp"
         android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
-        app:layout_constraintEnd_toEndOf="@+id/radioButton3"
-        tools:layout_editor_absoluteY="16dp" />
-
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Add Me"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="481dp" />
-
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="310dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text="Day"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton12"
-        tools:layout_editor_absoluteX="34dp" />
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <RadioButton
-        android:id="@+id/radioButton"
+        android:id="@+id/jan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:text="Jan"
-        app:layout_constraintStart_toStartOf="@+id/radioButton4"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/name"
+        tools:textSize="18sp" />
 
     <RadioButton
-        android:id="@+id/radioButton3"
-        android:layout_width="78dp"
-        android:layout_height="43dp"
-        android:layout_marginTop="36dp"
-        android:text="Mar"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton2"
-        app:layout_constraintEnd_toEndOf="@+id/radioButton6"
-        app:layout_constraintTop_toTopOf="@+id/radioButton2" />
-
-    <RadioButton
-        android:id="@+id/radioButton2"
+        android:id="@+id/feb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="72dp"
+        android:layout_marginStart="72dp"
         android:text="Feb"
-        app:layout_constraintBottom_toBottomOf="@+id/radioButton"
-        app:layout_constraintTop_toTopOf="@+id/radioButton"
-        tools:layout_editor_absoluteX="148dp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/jan"
+        app:layout_constraintStart_toEndOf="@+id/jan"
+        tools:textSize="18sp" />
 
     <RadioButton
-        android:id="@+id/radioButton4"
+        android:id="@+id/mar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mar"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/feb"
+        app:layout_constraintEnd_toEndOf="@+id/name" />
+
+    <RadioButton
+        android:id="@+id/apr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:text="Apr"
-        app:layout_constraintStart_toStartOf="@+id/radioButton7"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/jan" />
 
     <RadioButton
-        android:id="@+id/radioButton5"
+        android:id="@+id/may"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="May"
-        tools:layout_editor_absoluteX="148dp"
-        tools:layout_editor_absoluteY="174dp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/apr"
+        app:layout_constraintStart_toStartOf="@+id/feb"
+        tools:layout_editor_absoluteX="170dp" />
 
     <RadioButton
-        android:id="@+id/radioButton6"
+        android:id="@+id/jun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
         android:text="Jun"
-        app:layout_constraintEnd_toEndOf="@+id/radioButton9"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton3" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/may"
+        app:layout_constraintEnd_toEndOf="@+id/name" />
 
     <RadioButton
-        android:id="@+id/radioButton7"
+        android:id="@+id/jul"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:text="Jul"
-        app:layout_constraintStart_toStartOf="@+id/radioButton10"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton4" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/apr" />
 
     <RadioButton
-        android:id="@+id/radioButton8"
+        android:id="@+id/aug"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Aug"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="227dp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/jul"
+        app:layout_constraintStart_toStartOf="@+id/may"
+        tools:layout_editor_absoluteX="173dp" />
 
     <RadioButton
-        android:id="@+id/radioButton9"
+        android:id="@+id/sep"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
         android:text="Sep"
-        app:layout_constraintEnd_toEndOf="@+id/radioButton12"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton6" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/aug"
+        app:layout_constraintEnd_toEndOf="@+id/name" />
 
     <RadioButton
-        android:id="@+id/radioButton10"
+        android:id="@+id/oct"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="39dp"
         android:text="Oct"
-        app:layout_constraintStart_toStartOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton7" />
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@+id/name"
+        app:layout_constraintTop_toBottomOf="@+id/jul" />
 
     <RadioButton
-        android:id="@+id/radioButton11"
+        android:id="@+id/nov"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Nov"
-        tools:layout_editor_absoluteX="180dp"
-        tools:layout_editor_absoluteY="301dp" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/oct"
+        app:layout_constraintStart_toStartOf="@+id/aug" />
 
     <RadioButton
-        android:id="@+id/radioButton12"
+        android:id="@+id/dec"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
         android:text="Dec"
-        app:layout_constraintEnd_toEndOf="@+id/editText2"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton9" />
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/nov"
+        app:layout_constraintEnd_toEndOf="@+id/name" />
+
+    <EditText
+        android:id="@+id/day"
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="Day"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nov" />
+
+    <Button
+        android:id="@+id/add_me"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Add Me"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/day" />
 </android.support.constraint.ConstraintLayout>
