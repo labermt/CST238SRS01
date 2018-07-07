@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MonthSelection">
+
+    <TextView
+        android:id="@+id/MonthTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Select a Month"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/JanButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jan"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <Button
+        android:id="@+id/FebButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Feb"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <Button
+        android:id="@+id/MarButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mar"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="87dp" />
+
+    <Button
+        android:id="@+id/AprButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Apr"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <Button
+        android:id="@+id/MayButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="May"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <Button
+        android:id="@+id/JunButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jun"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="156dp" />
+
+    <Button
+        android:id="@+id/JulButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jul"
+        tools:layout_editor_absoluteX="44dp"
+        tools:layout_editor_absoluteY="227dp" />
+
+    <Button
+        android:id="@+id/AugButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Aug"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="227dp" />
+
+    <Button
+        android:id="@+id/SepButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sep"
+        tools:layout_editor_absoluteX="252dp"
+        tools:layout_editor_absoluteY="227dp" />
+
+    <Button
+        android:id="@+id/OctButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:text="Oct"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="293dp" />
+
+    <Button
+        android:id="@+id/NovButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nov"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="293dp" />
+
+    <Button
+        android:id="@+id/DecButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        android:text="Dec"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:layout_editor_absoluteY="293dp" />
+</android.support.constraint.ConstraintLayout>
