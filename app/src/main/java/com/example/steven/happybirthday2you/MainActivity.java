@@ -3,6 +3,7 @@ package com.example.steven.happybirthday2you;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.ArrayAdapter;
 import android.widget.Adapter;
 import java.util.Arrays;
@@ -15,13 +16,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Spinner monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.months_array, android.R.layout.simple_spinner_item);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        monthSpinner.setAdapter(adapter);
     }
 
-    Spinner monthSpinner1 = findViewById(R.id.monthSpinner);
-
-    String[] months_array = new String[]{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"};
-
-    ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, months_array);
-
-    monthSpinner1.setAdapter(adapter);
 }
