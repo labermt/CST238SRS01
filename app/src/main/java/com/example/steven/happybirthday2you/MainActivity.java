@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     String userdate;
     Set <String> birthdays;
     String formError = "";
+    boolean match = false;
     int usertotal;
 
     @Override
@@ -139,60 +140,80 @@ public class MainActivity extends AppCompatActivity {
         confirmBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
-            public void onClick(View v)
-            {
-                if(ValidateForm())
-                {
+            public void onClick(View v) {
+                if (ValidateForm()) {
                     confirmBtn.setError(null);
                     // Check for match! if so, reset
-                    // TODO: Check for match here and reset
+                    int index = 0;
+                    String matchName;
+                    for (String s : birthdays) {
+                        if (s.equals(usermonth + userdate)) {
+                            matchName = users.toArray()[index].toString();
+                            match = true;
+                            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                            alertDialog.setTitle("Success!");
+                            alertDialog.setMessage(username + " and " + matchName + " share the same birthday on: " + s + "! Number of entries: " + usertotal);
+                            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                    new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            // clear things
+                                            dialog.dismiss();
+                                            editor.clear();
+                                            editor.apply();
+                                            Intent intent = getIntent();
+                                            finish();
+                                            startActivity(intent);
+                                        }
+                                    });
+                            alertDialog.show();
+                        }
+                        index++;
+                    }
+                    if (!match) {
+                        // Save entry count
+                        int newTotal = ++usertotal;
+                        editor.putInt("saved_total", newTotal);
+                        editor.commit();
+                        // Save name
+                        users.add(username);
+                        Set<String> hat = new HashSet<String>(users);
+                        editor.putStringSet("saved_users", hat);
+                        editor.commit();
+                        String birthday = usermonth + userdate;
+                        birthdays.add(birthday);
+                        Set<String> hat2 = new HashSet<String>(birthdays);
+                        editor.putStringSet("saved_birthdays", hat2);
+                        // Save birthday 'Jan15'
+                        editor.commit();
+                        confirmBtn.setBackgroundColor(Color.GREEN);
 
-                    // Save entry count
-                    int newTotal = ++usertotal;
-                    editor.putInt("saved_total", newTotal);
-                    editor.commit();
-                    // Save name
-                    users.add(username);
-                    Set <String> hat = new HashSet<String>(users);
-                    editor.putStringSet("saved_users", hat);
-                    editor.commit();
-                    String birthday = usermonth + userdate;
-                    birthdays.add(birthday);
-                    Set <String> hat2 = new HashSet<String>(birthdays);
-                    editor.putStringSet("saved_birthdays", hat2);
-                    // Save birthday 'Jan15'
-                    editor.commit();
-                    confirmBtn.setBackgroundColor(Color.GREEN);
-
-                    // clear and update
-                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
-                    alertDialog.setTitle("Success!");
-                    alertDialog.setMessage("Information confirmed.");
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // clear things
-                                    dialog.dismiss();
-                                    //recreate();
-                                    //nameText.getText().clear();
-                                    //monthSpinner.setSelection(0);
-                                    //dateSpinner.setSelection(0);
-                                    Intent intent = getIntent();
-                                    finish();
-                                    startActivity(intent);
-                                }
-                            });
-                    alertDialog.show();
-                }
-                else
-                {
-                    confirmBtn.getBackground().clearColorFilter();
-                    confirmBtn.requestFocus();
-                    confirmBtn.setError(formError);
-                }
+                        // clear and update
+                        AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                        alertDialog.setTitle("Success!");
+                        alertDialog.setMessage("Information confirmed.");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // clear things
+                                        dialog.dismiss();
+                                        //recreate();
+                                        //nameText.getText().clear();
+                                        //monthSpinner.setSelection(0);
+                                        //dateSpinner.setSelection(0);
+                                        Intent intent = getIntent();
+                                        finish();
+                                        startActivity(intent);
+                                    }
+                                });
+                        alertDialog.show();
+                    }
+                }else {
+                        confirmBtn.getBackground().clearColorFilter();
+                        confirmBtn.requestFocus();
+                        confirmBtn.setError(formError);
+                    }
             }
         });
-
     }
 
     private boolean ValidateForm(){

@@ -18,6 +18,8 @@ Keep a count of how many people entered birthdays and display it in the app.
 Each entry is placed into persistent storage. If 2 dates match, the names are displayed along with the count of entries. Clear the persistent storage to reset the app.
 
 	- Entries placed into shared preference file
+	- Entried cleared after match
+	- Dialog box for match 
 
 While the user enters data, validate field data and form level data.
 
@@ -42,10 +44,11 @@ You must allow the user to enter data in any sequence.
 Issues:
 
 	- Persistent data 
-	- Error messages on Spinners
+	- Error messages on Spinners not showing
 
 Would be nice:
 
 	- Make Date button bigger 
 	- Error message on spinners
 	- Keyboard hangs on entering name 
+	- Overall "look"
