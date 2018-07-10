@@ -6,41 +6,137 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+
+    <TextView
+        android:id="@+id/nameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/name"
         android:layout_width="310dp"
         android:layout_height="44dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Name"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/nameLabel" />
 
+    <TextView
+        android:id="@+id/monthLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Birth Month"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/name" />
 
-    <EditText
+    <Spinner
         android:id="@+id/month"
         android:layout_width="310dp"
         android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="text"
         android:text="month"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="119dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthLabel" />
 
-    <EditText
+    <TextView
+        android:id="@+id/dayLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Birth Day"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/month" />
+
+    <Spinner
         android:id="@+id/day"
         android:layout_width="310dp"
         android:layout_height="48dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="number"
         android:textSize="18sp"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="214dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dayLabel"
         tools:text="day" />
+
+    <TextView
+        android:id="@+id/totalLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="# People Entered"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/day" />
+
+    <TextView
+        android:id="@+id/total"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Total"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/totalLabel" />
+
+    <TextView
+        android:id="@+id/buddyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="17dp"
+        android:text="Birth Day Buddies"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/total" />
+
+    <TextView
+        android:id="@+id/person1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Person 1"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buddyLabel" />
+
+    <TextView
+        android:id="@+id/person2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Person 2"
+        android:textAppearance="@android:style/TextAppearance.Holo.Light.Medium"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/person1" />
 
     <Button
         android:id="@+id/add_me"
@@ -51,6 +147,7 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="17dp"
         android:onClick="submitBirthday"
         android:text="Add Me"
         android:textSize="18sp"
@@ -58,40 +155,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/day"
+        app:layout_constraintTop_toBottomOf="@+id/person2"
         app:layout_constraintVertical_bias="0.775" />
 
-    <TableLayout
-        android:id="@+id/total_match"
-        android:layout_width="368dp"
-        android:layout_height="177dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="270dp">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </TableLayout>
-    <![CDATA[
-
-
-
-
-
-
-
-    />
-
-
-
-
-]]>
 </android.support.constraint.ConstraintLayout>
