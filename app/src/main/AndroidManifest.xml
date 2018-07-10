@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MonthSelection" />
-        <activity android:name=".DayRange"></activity>
+        <activity android:name=".DayRange" />
+        <activity android:name=".DisplayMessageActivity"></activity>
     </application>
 
 </manifest>
