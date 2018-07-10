@@ -1,6 +1,10 @@
 package com.example.steven.happybirthday2you;
 
+import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,25 +20,41 @@ import android.widget.Adapter;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import android.widget.ListView;
 import android.widget.AdapterView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
     String username;
+    Set <String> users;
     String usermonth;
     String userdate;
+    Set <String> birthdays;
     String formError = "";
-    //List<String> months30 = new ArrayList<String>();
     int usertotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
+
+        usertotal = sharedPref.getInt("saved_total", 0);
+        users = new HashSet<String>(sharedPref.getStringSet("saved_users", new HashSet<String>()));
+        birthdays = new HashSet<String>(sharedPref.getStringSet("saved_birthdays", new HashSet<String>()));
+
+        TextView totalText = findViewById(R.id.textView3);
+        final String text = "Total entries: " + Integer.toString(usertotal);
+        totalText.setText(text);
+
 
         final Spinner monthSpinner = (Spinner) findViewById(R.id.monthSpinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -124,7 +144,45 @@ public class MainActivity extends AppCompatActivity {
                 if(ValidateForm())
                 {
                     confirmBtn.setError(null);
+                    // Check for match! if so, reset
+                    // TODO: Check for match here and reset
+
+                    // Save entry count
+                    int newTotal = ++usertotal;
+                    editor.putInt("saved_total", newTotal);
+                    editor.commit();
+                    // Save name
+                    users.add(username);
+                    Set <String> hat = new HashSet<String>(users);
+                    editor.putStringSet("saved_users", hat);
+                    editor.commit();
+                    String birthday = usermonth + userdate;
+                    birthdays.add(birthday);
+                    Set <String> hat2 = new HashSet<String>(birthdays);
+                    editor.putStringSet("saved_birthdays", hat2);
+                    // Save birthday 'Jan15'
+                    editor.commit();
                     confirmBtn.setBackgroundColor(Color.GREEN);
+
+                    // clear and update
+                    AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                    alertDialog.setTitle("Success!");
+                    alertDialog.setMessage("Information confirmed.");
+                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // clear things
+                                    dialog.dismiss();
+                                    //recreate();
+                                    //nameText.getText().clear();
+                                    //monthSpinner.setSelection(0);
+                                    //dateSpinner.setSelection(0);
+                                    Intent intent = getIntent();
+                                    finish();
+                                    startActivity(intent);
+                                }
+                            });
+                    alertDialog.show();
                 }
                 else
                 {
@@ -135,11 +193,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
     }
 
     private boolean ValidateForm(){
-
         // check name, month, and date here.
         if(username == null) {
             formError = "Please enter a name";
@@ -170,4 +226,5 @@ public class MainActivity extends AppCompatActivity {
 
         return true;
     }
+
 }

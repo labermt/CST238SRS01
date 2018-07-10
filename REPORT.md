@@ -13,7 +13,11 @@ Create an app that allows you to enter a name, a birthday month and day (NOT the
 
 Keep a count of how many people entered birthdays and display it in the app.
 
+	- Count is displayed in bottom left corner
+	
 Each entry is placed into persistent storage. If 2 dates match, the names are displayed along with the count of entries. Clear the persistent storage to reset the app.
+
+	- Entries placed into shared preference file
 
 While the user enters data, validate field data and form level data.
 
@@ -37,7 +41,8 @@ You must allow the user to enter data in any sequence.
 
 Issues:
 
-	- 
+	- Persistent data 
+	- Error messages on Spinners
 
 Would be nice:
 
