@@ -24,7 +24,6 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="20dp"
         android:layout_marginRight="20dp"
-        android:onClick="callDayRangeSelection"
         android:text="@string/jan_send"
         android:visibility="visible"
         app:layout_constraintBaseline_toBaselineOf="@+id/FebButton"

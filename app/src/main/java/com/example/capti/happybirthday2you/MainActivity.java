@@ -20,14 +20,15 @@ public class MainActivity extends AppCompatActivity {
     public void callMonthSelect(View view)
     {
         Intent intent = new Intent(this, MonthSelection.class);
-        EditText editText = (EditText) findViewById(R.id.editText);
+        //EditText editText = (EditText) findViewById(R.id.editText);
         //String message = editText.getText().toString();
         //intent.putExtra(EXTRA_MESSAGE, message);
         startActivity(intent);
     }
     public void callDayRangeSelection(View view)
     {
-        Intent intent = new Intent(this, DayRangeSelection.class);
+        Intent intent;
+        intent = new Intent(this, DayRangeSelection.class);
         startActivity(intent);
     }
 }

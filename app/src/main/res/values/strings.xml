@@ -5,4 +5,6 @@
     <string name="button_send">Send</string>
     <string name="jan_send">Jan</string>
     <string name="happy_birthday_2_you">Happy Birthday 2 You</string>
+    <string name="pick_a_date_range">Pick a Date Range</string>
+
 </resources>
