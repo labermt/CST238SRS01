@@ -39,7 +39,13 @@ public class MainActivity extends AppCompatActivity {
         buttonSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int cool = people.size();
                 e_count.setText(Integer.toString(validateThenSave()));
+                if (cool < people.size()) {
+                    e_name.setText("");
+                    e_month.setText("");
+                    e_date.setText("");
+                }
             }
         });
 
@@ -47,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 e_count.setText(Integer.toString(clearAll()));
+                e_name.setText("");
+                e_month.setText("");
+                e_date.setText("");
             }
         });
 
@@ -65,28 +74,36 @@ public class MainActivity extends AppCompatActivity {
 
         Person person = new Person();
         person.name = e_name.getText().toString();
-        if (e_month.getText().toString().equals("January") ||
-                e_month.getText().toString().equals("February") ||
-                e_month.getText().toString().equals("March") ||
-                e_month.getText().toString().equals("April") ||
-                e_month.getText().toString().equals("May") ||
-                e_month.getText().toString().equals("June") ||
-                e_month.getText().toString().equals("July") ||
-                e_month.getText().toString().equals("August") ||
-                e_month.getText().toString().equals("September") ||
-                e_month.getText().toString().equals("October") ||
-                e_month.getText().toString().equals("November") ||
-                e_month.getText().toString().equals("December")) {
+        person.month = e_month.getText().toString();
+        person.month = person.month.trim();
+        person.name = person.name.trim();
+        if (person.name.length() == 0) {
+            Toast toast = Toast.makeText(getApplicationContext(), "Invalid Name!", Toast.LENGTH_SHORT);
+            toast.show();
+            return people.size();
+        }
+        if (person.month.equals("January") ||
+                person.month.equals("February") ||
+                person.month.equals("March") ||
+                person.month.equals("April") ||
+                person.month.equals("May") ||
+                person.month.equals("June") ||
+                person.month.equals("July") ||
+                person.month.equals("August") ||
+                person.month.equals("September") ||
+                person.month.equals("October") ||
+                person.month.equals("November") ||
+                person.month.equals("December")) {
             person.month = e_month.getText().toString();
         } else {
             Toast toast = Toast.makeText(getApplicationContext(), "Invalid Month!", Toast.LENGTH_SHORT);
             toast.show();
             return people.size();
         }
-        if (e_month.getText().toString().equals("September") ||
-                e_month.getText().toString().equals("April") ||
-                e_month.getText().toString().equals("June") ||
-                e_month.getText().toString().equals("November")) {
+        if (person.month.equals("September") ||
+                person.month.equals("April") ||
+                person.month.equals("June") ||
+                person.month.equals("November")) {
             if ((Integer.parseInt(e_date.getText().toString())) > 0 &&
                     (Integer.parseInt(e_date.getText().toString())) <= 30) {
                 person.date = Integer.parseInt(e_date.getText().toString());
@@ -100,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-        else if (e_month.getText().toString().equals("February")) {
+        else if (person.month.equals("February")) {
             if ((Integer.parseInt(e_date.getText().toString())) > 0 &&
                     (Integer.parseInt(e_date.getText().toString())) <= 29) {
                 person.date = Integer.parseInt(e_date.getText().toString());
