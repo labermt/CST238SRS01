@@ -11,10 +11,10 @@
         android:id="@+id/SAVE"
         android:layout_width="wrap_content"
         android:layout_height="49dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="152dp"
         android:text="Save"
-        app:layout_constraintTop_toBottomOf="@+id/DateBox"
-        tools:layout_editor_absoluteX="307dp" />
+        app:layout_constraintStart_toEndOf="@+id/DateBox"
+        app:layout_constraintTop_toBottomOf="@+id/DateBox" />
 
     <EditText
         android:id="@+id/MonthBox"
@@ -78,5 +78,30 @@
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Count:"
+        app:layout_constraintTop_toBottomOf="@+id/DateBox"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/COUNTER"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <Button
+        android:id="@+id/CLEAR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clear"
+        app:layout_constraintStart_toStartOf="@+id/SAVE"
+        app:layout_constraintTop_toBottomOf="@+id/SAVE" />
 
 </android.support.constraint.ConstraintLayout>
