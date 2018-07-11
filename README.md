@@ -1,7 +1,7 @@
 # CST238SRS01
 Happy Birthday 2 You  
 
-App Name:  
+App Name:  Happy Birtyday App
 
 Happy Birthday 2 You  
 

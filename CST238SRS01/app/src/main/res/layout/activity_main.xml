@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <Button
+        android:id="@+id/SAVE"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_marginTop="8dp"
+        android:text="Save"
+        app:layout_constraintTop_toBottomOf="@+id/DateBox"
+        tools:layout_editor_absoluteX="307dp" />
+
+    <EditText
+        android:id="@+id/MonthBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="116dp"
+        android:ems="10"
+        android:hint="January"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/NameBox"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/DateBox"
+        android:layout_width="83dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:ems="10"
+        android:hint="01"
+        android:inputType="number"
+        app:layout_constraintTop_toBottomOf="@+id/MonthBox"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <EditText
+        android:id="@+id/NameBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="John Smith"
+        android:inputType="textPersonName"
+        app:layout_constraintTop_toBottomOf="@+id/NameInst"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/MonthInst"
+        android:layout_width="349dp"
+        android:layout_height="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="Enter your birth month below:"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/MonthBox"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/DateInst"
+        android:layout_width="371dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="8dp"
+        android:text="Enter your birth date below"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/DateBox"
+        tools:layout_editor_absoluteX="16dp" />
+
+    <TextView
+        android:id="@+id/NameInst"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginTop="24dp"
+        android:text="Enter your name:"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
+
+</android.support.constraint.ConstraintLayout>
