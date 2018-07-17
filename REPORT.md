@@ -9,6 +9,6 @@ Talked with Mitch so this will be a placholder until I can present Saturday (Pos
 Issues: Car Crash
 
 
-Updated Notes: I found this project to be quite a step up in difficulty from the previous assignment. The basic design layout was not hard, but learning how to correctly output and file io in a different IDE was a challenge. THe biggest issue was the form and field validation as I knew what I wantd to achieve, but could not find the best example to learn from.
+Updated Notes: I found this project to be quite a step up in difficulty from the previous assignment. The basic design layout was not hard, but learning how to correctly output and file io in a different IDE was a challenge. The biggest issue was the form and field validation as I knew what I wanted to achieve, but could not find the best example to learn from.
 
-Updated Issues: Finding good examples of validation for the path I chose to proceed.
+Updated Issues: Finding good examples of validation for the path I chose to proceed. No one else seemed to do a mix of input and spinner as I did and it felt almost impossible to understand easily how each part needed each other to interact in a proper flowing manner.
